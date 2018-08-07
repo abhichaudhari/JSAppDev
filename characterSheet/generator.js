@@ -1,5 +1,4 @@
-let Chance = require('chance'),
-    chance = new Chance();
+let chance = new (require('chance'))
 
 let character = {
     name: null,
