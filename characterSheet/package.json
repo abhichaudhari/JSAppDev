@@ -1,0 +1,15 @@
+{
+  "name": "charactersheet",
+  "version": "1.0.0",
+  "description": "Character Sheet Generator",
+  "main": "generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhijeet Chaudhari",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chance": "^1.0.16"
+  }
+}
