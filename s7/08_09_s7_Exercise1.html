@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock, Paper & Scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <h2>Rock, Paper & Scissors</h2>
+    <button onclick="runEvent()">Run Event</button>
+    <div id="app">Waiting to be replaced</div>
+    <script src="./rps.js"></script>
+    <script>
+        let app = document.getElementById("app");
+        let rounds = 0;
+
+        function getRoundAmount() {
+            let numberRounds = prompt("How many rounds should the tournament have ?");
+            rounds = numberRounds;
+        };
+
+        function clearGame() {
+            rounds = "";
+            logoutput = "";
+            app.innerHTML = "Ready to run";
+        };
+
+        function runEvent() {
+            clearGame();
+            while (!rounds) {
+                getRoundAmount();
+            };
+            playTournament(p1, p2, p3, p4, rounds);
+            app.innerHTML = logoutput;
+        };
+
+    </script>
+
+</body>
+</html>
