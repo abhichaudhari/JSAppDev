@@ -27,10 +27,10 @@ let character = {
 
 ### Functionality
 
+- You can name your character
 - Ability values are randomly generated at the start
 - Abilities can not be less than 10 or greater than 20
-- You start with 12 additional points to disperse
-- You can name your character
+- You 12 additional points to disperse between abilities
 - You can add points to an ability
   - Points are subtracted from the additional points
 - You can remove points from an ability
@@ -45,3 +45,6 @@ let character = {
   - heal each other
   - have inventory
   - trade
+- Reroll Generate Points
+- Save/Load Character
+- List Saved Characters
