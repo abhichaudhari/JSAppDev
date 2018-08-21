@@ -32,6 +32,7 @@ let addPointsToAbility = (object, points, ability) => {
             console.log("Insufficient points available to spend");
         }
     }
+    console.log("Available Points = ", availablePoints);
 };
 
 
@@ -50,6 +51,7 @@ let removePointsFromAbility = (object, points, ability) => {
             availablePoints += maxTakeAway;
         };
     }
+    console.log("Available Points = ", availablePoints);
 };
 
 

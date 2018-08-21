@@ -22,21 +22,21 @@ generator.populateCharacter(character, characterKeys, 10, 20);
 
 console.log(character);
 
-console.log("Available Points = ", generator.availablePoints);
+//console.log("Available Points = ", generator.availablePoints);
 
 console.log("Executing addPointsToAbility");
-console.log("Available Points = ", generator.availablePoints);
+//console.log("Available Points = ", generator.availablePoints);
 console.log("Points to be added = 10 for ability agility");
 generator.addPointsToAbility(character, 10, "agility");
 console.log(character);
-console.log("Available Points = ", generator.availablePoints);
+//console.log("Available Points = ", generator.availablePoints);
 
 console.log("Executing removePointsFromAbility");
-console.log("Available Points = ", generator.availablePoints);
+//console.log("Available Points = ", generator.availablePoints);
 console.log("Points to be removed = 5 from ability charisma");
 generator.removePointsFromAbility(character, 5, "charisma");
 console.log(character);
-console.log("Available Points = ", generator.availablePoints);
+//console.log("Available Points = ", generator.availablePoints);
 
 
 module.exports = {
