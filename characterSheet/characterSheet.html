@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible">
+    <title>Character Sheet Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/character.css" />
+</head>
+
+<body>
+    <h2>Character Sheet Generator</h2>
+
+    <div class="form-container">
+        <form id="form" name="form">
+            <label>Name of Character: </label>
+            <input id="name" placeholder="Name" type="text">
+            <br>
+            <label>Enter the minimum value for an Ability: </label>
+            <input id="min" placeholder="Min" type="number">
+            <br>
+            <label>Enter the maximum value for an Ability: </label>
+            <input id="max" placeholder="Min" type="number">
+            <br>
+            <input id="submit" type="button" value="Create the Character">
+        </form>
+    </div>
+
+    <h1>List of Characters</h1>
+    <br>
+
+    <div id="characterList"></div>
+
+    <script src="./js/character.js"></script>
+
+</body>
+
+</html>

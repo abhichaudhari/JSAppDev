@@ -2,7 +2,9 @@
 
 Character sheet generator generates a character sheet with random values per ability.
 
-## Abilities
+## Character spec
+
+### Abilities
 
 - strength
 - agility
@@ -11,9 +13,9 @@ Character sheet generator generates a character sheet with random values per abi
 - wisdom
 - intelligence
 
-## Spec
+### Spec
 
-### Data structure
+#### Data structure
 
 - Character is an object
     - Each ability is a key as an integer
@@ -25,7 +27,7 @@ let character = {
 }
 ```
 
-### Functionality
+#### Functionality
 
 - You can name your character
 - Ability values are randomly generated at the start
@@ -36,7 +38,7 @@ let character = {
 - You can remove points from an ability
   - Points are added to the additional points
 
-## Future Features
+## Web Features
 
 - Characters will
   - battle each other
@@ -48,3 +50,15 @@ let character = {
 - Reroll Generate Points
 - Save/Load Character
 - List Saved Characters
+
+### Functionality
+
+- Has a home page
+  - List Characters
+    - Edit Character
+      - Editing Name
+  - Allows to go to character generation page
+- Character generation page
+  - Generates Character
+  - Regenerate until you're satified
+  - Save Character

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible">
+    <title>Character Sheet Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/character.css" />
+</head>
+
+<body>
+    <h2>Character Sheet Generator</h2>
+
+    <div class="form-container">
+        <form id="form" name="form">
+            <label>Name of Character: </label>
+            <input id="name" placeholder="Name" type="text">
+            <br>
+            <label>Enter the minimum value for an Ability: </label>
+            <input id="min" placeholder="Min" type="number">
+            <br>
+            <label>Enter the maximum value for an Ability: </label>
+            <input id="max" placeholder="Min" type="number">
+            <br>
+            <input id="submit" type="button" value="Create the Character">
+        </form>
+    </div>
+
+    <h1>List of Characters</h1>
+    <br>
+
+    <div id="characterList"></div>
+
+    <script>
+        let character = {
+            name: null,
+            abilities: {
+                strength: 0,
+                agility: 0,
+                charisma: 0,
+                dexterity: 0,
+                wisdom: 0,
+                intelligence: 0
+            }
+        }
+
+        const form = document.getElementById('form');
+        const characterName = document.getElementById('name').value;
+        const min = document.getElementById('min').value;
+        const max = document.getElementById('max').value;
+        const submitButton = document.getElementById('submit');
+        const characterList = document.getElementById('characterList');
+
+        //generator.generateCharactername(character);
+
+        let characterKeys = Object.keys(character.abilities);
+
+        let charactersArray = localStorage.getItem('characters') ? JSON.parse(localStorage.getItem('characters')) : [];
+
+        localStorage.setItem('characters', JSON.stringify(charactersArray));
+
+        const data = JSON.parse(localStorage.getItem('characters'));
+        
+        //generator.addPointsToAbility(character, 10, "agility");
+
+        //generator.removePointsFromAbility(character, 5, "charisma");
+
+        let randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+        let populateCharacter = (character, characterKeys, name, min, max) => {
+            character.name = name;
+            for (i = 0; i < characterKeys.length; i++) {
+                character.abilities[characterKeys[i]] = randomInt(min, max);
+            }
+            console.log(character);
+        }
+
+        let displayCharacter = (character, characterKeys, name, min, max) => {
+            generateCharactername(character);
+            populateCharacter(character, characterKeys, name, min, max);
+            return character;
+        };
+
+
+        let availablePoints = 12;
+
+        let addPointsToAbility = (character, points, ability) => {
+
+            let propertyValue = character.abilities[ability];
+            if (propertyValue) {
+
+                let maxSpend = 20 - propertyValue;
+
+                if (points < maxSpend) {
+                    let spend = points;
+                } else {
+                    spend = maxSpend;
+                };
+
+                console.log(propertyValue, spend);
+                if (availablePoints >= spend) {
+                    character.abilities[ability] += spend;
+                    availablePoints -= spend;
+                } else {
+                    console.log("Insufficient points available to spend");
+                }
+            }
+            console.log("Available Points = ", availablePoints);
+        };
+
+
+        let removePointsFromAbility = (character, points, ability) => {
+
+            let propertyValue = character.abilities[ability];
+            if (propertyValue) {
+
+                let maxTakeAway = propertyValue - 10;
+
+                if (points < maxTakeAway) {
+                    character.abilities[ability] -= points;
+                    availablePoints += points;
+                } else {
+                    character.abilities[ability] -= maxTakeAway;
+                    availablePoints += maxTakeAway;
+                };
+            }
+            console.log("Available Points = ", availablePoints);
+        };
+
+        populateCharacter(character, characterKeys, characterName, min, max);
+
+        console.log(character);
+
+        form.addEventListener('submit', () => {
+            //e.preventDefault();
+
+            charactersArray.push("character");
+            localStorage.setItem('characters', JSON.stringify(charactersArray));
+        });
+
+        //console.log("LocalStorage character array = ", localStorage.getItem('characters'))
+        characterList.innerHTML = localStorage.getItem('characters');
+
+
+    </script>
+
+</body>
+
+</html>

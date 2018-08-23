@@ -1,0 +1,131 @@
+<!-- Exercise 1: REST
+Create buttons that do each of the tasks below
+Render the results to the page in html elements.
+Hide the results from the previous actions
+1.) Get all posts
+2.) Get post with id of 10
+3.) Get the comments from post with id of 12
+    Note: comments are part of a different data model, you'll need to structure your endpoint to ask for all of the comments that belong to post #12
+4.) Get all the posts from user with id of 2
+5.) Create a new post and log the id generated for it by the server
+6.) Replace the post with id of 12 and render the responseJSON
+7.) Update the title of post with id of 12 and render responseJSON
+8.) Delete the post with id of 12 and render a success message
+9.) Display a list of posts.
+10.) When the user clicks on a post, display all the comments from that post
+11.) Display a link back to all posts -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Session 10 Exercise 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <!-- 1.) Get all posts -->
+    <button id="Button1">Get all Posts</button>
+    <p id="q1"></p>
+    <script>
+        $.get('http://jsonplaceholder.typicode.com/posts', function (data) {
+            document.getElementById("Button1").addEventListener("click", function () {
+                document.getElementById("q1").innerHTML = JSON.stringify(data);
+            });
+        });
+    </script>
+
+    <!-- 2.) Get post with id of 10 -->
+    <button id="Button2">Get post with id of 10</button>
+    <p id="q2"></p>
+    <script>
+        $.get('http://jsonplaceholder.typicode.com/posts/10', function (data) {
+            document.getElementById("Button2").addEventListener("click", function () {
+                document.getElementById("q2").innerHTML = JSON.stringify(data);
+            });
+        });
+    </script>
+
+    <!-- 3.) Get the comments from post with id of 12 -->
+    <button id="Button3">Get the comments from post with id of 12</button>
+    <p id="q3"></p>
+    <script>
+        $.get('http://jsonplaceholder.typicode.com/posts/12/comments', function (data) {
+            document.getElementById("Button3").addEventListener("click", function () {
+                document.getElementById("q3").innerHTML = JSON.stringify(data);
+            });
+        });
+    </script>
+
+    <!-- 4.) Get all the posts from user with id of 2 -->
+    <button id="Button4">Get all the posts from user with id of 2</button>
+    <p id="q4"></p>
+    <script>
+        $.get('http://jsonplaceholder.typicode.com/user/2/posts', function (data) {
+            document.getElementById("Button4").addEventListener("click", function () {
+                document.getElementById("q4").innerHTML = JSON.stringify(data);
+            });
+        });
+    </script>
+
+    <!-- 5.) Create a new post and log the id generated for it by the server -->
+    <button id="Button5">Create a new post and log the id generated for it by the server</button>
+    <p id="q5"></p>
+    <script>
+        $.post('http://jsonplaceholder.typicode.com/posts', {
+            userId: 01,
+            title: "Abhijeet's New Post",
+            body: "sample body"
+        }, function (data) {
+            document.getElementById("Button5").addEventListener("click", function () {
+                document.getElementById("q5").innerHTML = JSON.stringify(data.id);
+            });
+        });  
+    </script>
+
+    <!-- 6.) Replace the post with id of 12 and render the responseJSON -->
+    <button id="Button6">Replace the post with id of 12 and render the responseJSON</button>
+    <p id="q6"></p>
+    <script>
+        $.ajax({
+            method: 'PUT',
+            url: 'http://jsonplaceholder.typicode.com/posts/12',
+            data: {
+                userId: 02,
+                title: "Replaced Post",
+                body: "Replaced post body"
+            },
+            complete: function (response) {
+                document.getElementById("Button6").addEventListener("click", function () {
+                    document.getElementById("q6").innerHTML = JSON.stringify(response.responseJSON);
+                });
+            }
+        });
+    </script>
+
+    <!-- 7.) Update the title of post with id of 12 and render responseJSON -->
+
+    <button id="Button7">Update the title of post with id of 12 and render responseJSON</button>
+    <p id="q7"></p>
+    <script>
+        $.ajax({
+            method: 'PUT',
+            url: 'http://jsonplaceholder.typicode.com/posts/12',
+            data: {
+                title: "Replaced Title for Post with id of 12",
+            },
+            complete: function (response) {
+                document.getElementById("Button7").addEventListener("click", function () {
+                    document.getElementById("q7").innerHTML = JSON.stringify(response.responseJSON);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
