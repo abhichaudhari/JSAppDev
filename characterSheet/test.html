@@ -15,15 +15,15 @@
     <div class="form-container">
         <form id="form" name="form">
             <label>Name of Character: </label>
-            <input id="name" placeholder="Name" type="text">
+            <input name="fullname" placeholder="Name" type="text">
             <br>
             <label>Enter the minimum value for an Ability: </label>
-            <input id="min" placeholder="Min" type="number">
+            <input name="min" placeholder="Min" type="number">
             <br>
             <label>Enter the maximum value for an Ability: </label>
-            <input id="max" placeholder="Min" type="number">
+            <input name="max" placeholder="Min" type="number">
             <br>
-            <input id="submit" type="button" value="Create the Character">
+            <input type="submit" name="submit" value="Create the Character">
         </form>
     </div>
 
@@ -45,14 +45,28 @@
             }
         }
 
-        const form = document.getElementById('form');
-        const characterName = document.getElementById('name').value;
-        const min = document.getElementById('min').value;
-        const max = document.getElementById('max').value;
-        const submitButton = document.getElementById('submit');
-        const characterList = document.getElementById('characterList');
+        let form = document.getElementsByName('form');
+        //let characterName = form.getElementsByName('min');
+
+        let characterName = document.getElementsByName('fullname').value;
+        console.log(characterName);
+        let min = document.getElementsByName('min').value;
+        console.log(min);
+        let max = document.getElementsByName('max').value;
+        console.log(max);
+        let submitButton = document.getElementsByName('submit');
+        let characterList = document.getElementById('characterList');
 
         //generator.generateCharactername(character);
+        
+        /* let form = document.getElementById('form');
+        let data = new FormData(form);
+
+        let characterName = data.get('fullname');
+        let min = data.get('min');
+        let max = data.get('max');
+        let submitButton = document.getElementById('submit');
+        let characterList = document.getElementById('characterList'); */
 
         let characterKeys = Object.keys(character.abilities);
 
@@ -60,8 +74,8 @@
 
         localStorage.setItem('characters', JSON.stringify(charactersArray));
 
-        const data = JSON.parse(localStorage.getItem('characters'));
-        
+        let data = JSON.parse(localStorage.getItem('characters'));
+
         //generator.addPointsToAbility(character, 10, "agility");
 
         //generator.removePointsFromAbility(character, 5, "charisma");
@@ -132,14 +146,14 @@
 
         console.log(character);
 
-        form.addEventListener('submit', () => {
-            //e.preventDefault();
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
 
             charactersArray.push("character");
             localStorage.setItem('characters', JSON.stringify(charactersArray));
         });
 
-        //console.log("LocalStorage character array = ", localStorage.getItem('characters'))
+        console.log("LocalStorage character array = ", localStorage.getItem('characters'))
         characterList.innerHTML = localStorage.getItem('characters');
 
 
