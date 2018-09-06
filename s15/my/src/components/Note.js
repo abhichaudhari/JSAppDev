@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../css/Note.css';
+const GENERIC_NOTE_TITLE = "New Note Title", GENERIC_NOTE_BODY = "New Note Body";
 
 class Note extends Component {
     constructor() {
@@ -9,8 +10,8 @@ class Note extends Component {
 
     componentWillMount() {
         this.state = {
-            title: this.props.title,
-            body: this.props.body,
+            title: GENERIC_NOTE_TITLE,
+            body: GENERIC_NOTE_BODY,
             editMode: false
         }
     }
@@ -29,6 +30,10 @@ class Note extends Component {
         });
     }
 
+    handleDelete() {
+        this.props.deleteHandler(this.props.id);
+    }
+
 
     render() {
         let titleElement, bodyElement, buttonArea;
@@ -39,7 +44,7 @@ class Note extends Component {
         } else {
             titleElement = <h5>{this.state.title}</h5>;
             bodyElement = <p>{this.state.body}</p>;
-            buttonArea = <div><button className="btn btn-info" onClick={this.handleEdit.bind(this)}>Edit</button><button className="btn btn-danger">Delete</button></div>;
+            buttonArea = <div><button className="btn btn-info" onClick={this.handleEdit.bind(this)}>Edit</button><button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button></div>;
         }
 
         return (
