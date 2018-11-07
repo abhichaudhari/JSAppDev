@@ -37,6 +37,7 @@ class Routes extends Component {
                 <div>
                     <NavBar />
                     <hr />
+                    <Route name="Board" path="/about" component={About} />
                     <Route name="About" path="/about" component={About} />
                 </div>
             </Router>
